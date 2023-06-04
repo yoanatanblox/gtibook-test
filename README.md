@@ -47,7 +47,7 @@ The entire operator registry can be viewed via the ssv.network’s [explorer](ht
 
 #### 2. Retrieve Events Data <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
 
-SSV network’s developer tools and smart contracts transactions require off-chain state inputs for operation and security.
+The SSV developer tools and smart contracts transactions require off-chain state inputs for operation and security.
 
 Use the [SSV Scanner](https://ssv-network.gitbook.io/docs-v4/tools/ssv-scanner) tools to retrieve the latest **registration nonce** and **cluster snapshot** for your account and validator cluster - they will both be required as inputs for the next step.
 
