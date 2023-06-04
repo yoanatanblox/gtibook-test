@@ -101,13 +101,13 @@ Description: sets a fee recipient address to receive tips from user transactions
 
 Description: Registers new validator to a cluster of provided operators (ids + shares), **fails if** number of operatorIds is greater than 13..
 
-| **Parameter** | **Type**                   | **Description**                                                                                                            |
-| ------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| publicKey     | bytes                      | The validator’s public key.                                                                                                |
-| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                             |
-| shares        | bytes                      | String of keyshares - obtained by splitting the validator key using the [SSV-Keys](../tools/ssv-keys/) tool.               |
-| amount        | uint256 (casted to uint64) | <p>Amount of SSV token to be deposited as payment</p><p>(not mandatory)</p>                                                |
-| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**                   | **Description**                                                                                                        |
+| ------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| publicKey     | bytes                      | The validator’s public key.                                                                                            |
+| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                         |
+| shares        | bytes                      | String of keyshares - obtained by splitting the validator key using the [SSV-Keys](../tools/ssv-keys/) tool.           |
+| amount        | uint256 (casted to uint64) | <p>Amount of SSV token to be deposited as payment</p><p>(not mandatory)</p>                                            |
+| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 
@@ -115,11 +115,11 @@ Description: Registers new validator to a cluster of provided operators (ids + s
 
 Description: Removes validator from the SSV network.
 
-| **Parameter** | **Type**  | **Description**                                                                                                            |
-| ------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
-| publicKey     | bytes     | The validator’s public key.                                                                                                |
-| operatorIds   | unit64\[] | List of cluster operators Ids.                                                                                             |
-| cluster       | tuple\[]  | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**  | **Description**                                                                                                        |
+| ------------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
+| publicKey     | bytes     | The validator’s public key.                                                                                            |
+| operatorIds   | unit64\[] | List of cluster operators Ids.                                                                                         |
+| cluster       | tuple\[]  | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 
@@ -127,12 +127,12 @@ Description: Removes validator from the SSV network.
 
 Description: Deposits SSV token into a cluster, **will fail if** not enough tokens are approved.
 
-| **Parameter** | **Type**                   | **Description**                                                                                                            |
-| ------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| owner         | address                    | The cluster owner address                                                                                                  |
-| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                             |
-| amount        | uint256 (casted to uint64) | $SSV amount to be deposited                                                                                                |
-| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**                   | **Description**                                                                                                        |
+| ------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| owner         | address                    | The cluster owner address                                                                                              |
+| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                         |
+| amount        | uint256 (casted to uint64) | $SSV amount to be deposited                                                                                            |
+| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 
@@ -140,11 +140,11 @@ Description: Deposits SSV token into a cluster, **will fail if** not enough toke
 
 Description: Withdraws a specified amount of SSV tokens from cluster of msg.sender, **will fail if** msg.sender tries to withdraw more than the cluster’s liquidation collateral. To withdraw the entire cluster balance and stop its operation use liquidate().
 
-| **Parameter** | **Type**                   | **Description**                                                                                                            |
-| ------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                             |
-| amount        | uint256 (casted to uint64) | Amount to be withdrawn                                                                                                     |
-| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**                   | **Description**                                                                                                        |
+| ------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                         |
+| amount        | uint256 (casted to uint64) | Amount to be withdrawn                                                                                                 |
+| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 
@@ -152,11 +152,11 @@ Description: Withdraws a specified amount of SSV tokens from cluster of msg.send
 
 Description: Reactivates a liquidated cluster, **will fail** if insufficient SSV tokens to cover the cluster’s liquidation collateral have been deposited.
 
-| **Parameter** | **Type**                   | **Description**                                                                                                            |
-| ------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                             |
-| amount        | uint256 (casted to uint64) | $SSV amount to be deposited                                                                                                |
-| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**                   | **Description**                                                                                                        |
+| ------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| operatorIds   | unit64\[]                  | List of cluster operators Ids.                                                                                         |
+| amount        | uint256 (casted to uint64) | $SSV amount to be deposited                                                                                            |
+| cluster       | tuple\[]                   | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 
@@ -168,11 +168,11 @@ Write methods for liquidators
 
 Description: Liquidates a cluster sends their balances to the msg.sender (the Liquidator), **will fail** if the cluster is not liquidatable (see isLiquidatable()).
 
-| **Parameter** | **Type**  | **Description**                                                                                                            |
-| ------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
-| owner         | address   | The cluster owner address                                                                                                  |
-| operatorIds   | unit64\[] | List of cluster operators Ids.                                                                                             |
-| cluster       | tuple\[]  | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/cluster-scanner/)r tool. |
+| **Parameter** | **Type**  | **Description**                                                                                                        |
+| ------------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
+| owner         | address   | The cluster owner address                                                                                              |
+| operatorIds   | unit64\[] | List of cluster operators Ids.                                                                                         |
+| cluster       | tuple\[]  | Object containing the latest cluster snapshot data - obtained using the [Cluster-Scanne](../tools/ssv-scanner/)r tool. |
 
 
 

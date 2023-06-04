@@ -2,8 +2,6 @@
 
 The SSV Keys tools enable users to split a validator key into a predefined threshold of shares via [Shamir-Secret-Sharing (SSS)](https://en.wikipedia.org/wiki/Shamir's\_Secret\_Sharing), and encrypts them with a set of operator keys.
 
-The **shares** are used during validator registration through the SSV smart contract in order to facilitate their distribution from stakers to operators.
+In addition to the generation of shares, the tool also uses the validator key to sign the validator’s owner address and his validator registration nonce to ensure that only the legitimate owner of the validator can register it to the network.
 
-{% hint style="info" %}
-Please note that **shares** can be shared publicly since only assigned operators are able to decrypt them.
-{% endhint %}
+The shares and the signature are constructed as **sharesData** which is used during [validator registration](https://docs.ssv.network/developers/smart-contracts/ssvnetwork#public-registervalidator-publickey-operatorids-shares-amount-cluster) through the SSV smart contract in order to facilitate their distribution from stakers to operators.

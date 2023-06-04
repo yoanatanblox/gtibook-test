@@ -6,7 +6,7 @@ The `SSV Keys CLI` tool is a command-line interface that splits a validator key 
 
 {% tabs %}
 {% tab title="Executable" %}
-1. Navigate to the [SSV GitHub](https://github.com/bloxapp/ssv-keys/releases/tag/v0.0.11) releases section
+1. Navigate to the [SSV GitHub](https://github.com/bloxapp/ssv-keys/releases/tag/v0.0.20) releases section
 2. Download the native executable for your operating system:
    * `ssv-keys-lin` - for Ubuntu Linux
    * `ssv-keys-mac` - for macOS
@@ -15,20 +15,11 @@ The `SSV Keys CLI` tool is a command-line interface that splits a validator key 
 {% endtab %}
 
 {% tab title="yarn" %}
-Clone the keys repo
-
-<pre class="language-sh"><code class="lang-sh"><strong>git clone https://github.com/bloxapp/ssv-keys.git --branch=v0.0.11
-</strong></code></pre>
-
-Navigate to repo `ssv-keys`
-
-<pre class="language-sh"><code class="lang-sh"><strong>cd ssv-keys
-</strong></code></pre>
-
-Run yarn
-
-<pre class="language-sh"><code class="lang-sh"><strong>yarn
-</strong></code></pre>
+```sh
+1 git clone https://github.com/bloxapp/ssv-keys.git --branch=v0.0.20
+2 cd ssv-keys
+3 yarn
+```
 {% endtab %}
 {% endtabs %}
 
@@ -40,26 +31,21 @@ Please note that If your operating system prevents you from running the executab
 
 You can use **`shares --help`** to see all arguments. Note that if there are missing arguments that the CLI needs, it will ask you for them.
 
-| Argument           | Type   | Description                                                                                         |
-| ------------------ | ------ | --------------------------------------------------------------------------------------------------- |
-| `--keystore`       | string | The validator keystore file path                                                                    |
-| `--password`       | string | The keystore file encryption password                                                               |
-| `--operators-ids`  | int    | Operators unique identifier on the ssv.network                                                      |
-| `--operators-keys` | string | Operators public keys                                                                               |
-| `--version`        | int    | The version of the tool (default = v3), e.g. use “2” for v2 contracts compatible version (optional) |
-| `--output-folder`  | string | Target folder path to output the key shares file                                                    |
+<table><thead><tr><th width="277">Argument</th><th width="122.33333333333331">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>--keystore (-ks)</code></td><td>string</td><td>The validator keystore file path</td></tr><tr><td><code>--password (-ps)</code></td><td>string</td><td>The keystore file encryption password</td></tr><tr><td><code>--operators-ids (-oids)</code></td><td>int</td><td>Comma-separated list of operator IDs. The amount must be 3f+1 compatible.</td></tr><tr><td><code>--operators-keys (-oks)</code></td><td>string</td><td><p>Comma-separated list of operator keys (same sequence as operator ids). </p><p>The amount must be 3f+1 compatible.</p></td></tr><tr><td><code>--owner-address (-oa)</code></td><td>string</td><td>The cluster owner address (in the SSV contract)</td></tr><tr><td><code>--owner-nonce (-on)</code></td><td>int</td><td>The validator registration nonce of the account (owner address) within the SSV contract (increments after each validator registration), obtained using the ssv-scanner tool.</td></tr><tr><td><code>--output-folder (-of)</code></td><td>string</td><td>Target folder path to output the key shares file</td></tr></tbody></table>
 
 **Run**
 
 {% tabs %}
 {% tab title="Executable" %}
 1. Run the Executable file through terminal `./ssv-keys`
+   1. `./ssv-keys` (Mac)
+   2. `ssv-keys.exe` (Windows)
 2. Follow the instructions
 {% endtab %}
 
 {% tab title="yarn" %}
 ```
-yarn cli shares --keystore=<KEYSTORE_FILE_FILE> --password=<FILE_PASSWORD> --operator-ids=<OPERATOR1_ID,OPERATOR2_ID, OPERATOR3_ID, OPERATOR4_ID> --operator-keys=<OPERATOR1_KEY, OPERATOR2_KEY, OPERATOR3_KEY, OPERATOR4_KEY> --output-folder=<TARGET_FILE_PATH> 
+yarn cli shares --keystore=<KEYSTORE_FILE_FILE> --password=<FILE_PASSWORD> --operator-ids=<OPERATOR1_ID,OPERATOR2_ID, OPERATOR3_ID, OPERATOR4_ID> --operator-keys=<OPERATOR1_KEY, OPERATOR2_KEY, OPERATOR3_KEY, OPERATOR4_KEY> --owner-address=<OWNER_ADDRESS> --owner-nonce=<OWNER_REGISTRATION_NONCE) --output-folder=<TARGET_FILE_PATH> 
 ```
 {% endtab %}
 {% endtabs %}
@@ -73,58 +59,41 @@ A json file will be generated with the shares and the transaction payload requir
 {% code title="keyshares-20230305_044622.json" %}
 ```json
 {
- "version": "v3",
- "data": {
-   "publicKey": "0xb7dd6a82a54215abf4028269c1b7t600a0d9d40571a8a0fd6828d9bbed47ba543e584d70e5c657ce03c4c4a12c2b1143",
-   "operators": [
-     {
-       "id": 1,
-       "publicKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBN2pXcExremd2TXdvRzhNdEVyUjIKRGhUMk11dElmYUd0VmxMeDVWK2g4amwrdnlxT1YvcmxKREVlQy9HMzVpV0M0WEU3RnFKUVc1QmpvQWZ1TXhQegpRQzZ6MEE1b1I3enRuWHU2c0V3TkhJSFh3REFITHlTdVdQM3BGYlo0Qnc5b1FZTUJmbVNsL3hXR0syVnN3aVhkCkNFcUZKRmdNUFk3NlJQY0o2R2dkTWcrWVRRWVVFamlRTjFpdmJKZjRWaUpCRTcrbVNteFZNNTAzVmlyQWZndkIKenBndTNzdHZIdHpRV1Z2eHJ0NTR0Rm9DMHRmWE1RRXNSU0VtTVRoVkhocVorZTJCOC9kTWQ2R1FodnE5ZXR1RQphQkxoSlpFUXlpMklpUU02Ulg2a01vZGdGUmcvemttTFZXQ0VITzEzaFV5Rkoxang1L0M5bEIyU2VENW9jd1h4CmJRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
-     },
-     {
-       "id": 2,
-       "publicKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcjZXc09kMzJZVStPeVowVVZtUlYKQkhEREtLM2U1OTRpUzV2dHRLMVJiMlVYd3YwNGZKcGd4L1NQWmlqUmE0eFdmc3ZsaTMxeHg1c2srMlh6OTJ1VQo5TlE4OGRlL0YxemJtanQwM25wWjhaS253cm1LOXZURE9PZFY4M1RiMUNYTzFhb3J2eVM1MERiZTlSbHE2SGNDCnVuTTRaQnk0SHdvZ2pBZjY2YTFCc085eGx2Rjc0UEgrRTJ0Q1k0ZVYwL1M4VFdHbjh4R0dITW5GT0l1UmRMUTAKemMvQ0pPVjBIK1daSEVEZTcyNU8wR1AwTXV0QmNHZWE1R3A4ckZwWHkvMDFBdmlXajBnMDdqMFR1M0hZN0dlSwovZVNTL1hWOGJURG44M0ZQbE54WHdyVml3czl0cGxzTFMxeUxSN0xxT2NYYVl4NHRLY3FrVTQ0UFhmem9UeC9BCmh3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
-     },
-     {
-       "id": 3,
-       "publicKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdVIzV0hmU1lhWlE0NjkxenR0aTYKZlBBcExqa29LcysrQS90QWdSVXdHbEhXYm5iNjJPVU4ra0tTUU53VWlNMFRwWGdOVHVSNGpjdWdKa1NTRlRSRAp5WEwvSXRpbzlFZHE3aEhRQ3BEQ0xCVFNYRlNtMjJrNlNRbllGeWs3UVNndnoyQW9mOXJ6YVdBQmVmUkZPdUs5CnFWT00rbzhnRnFwcXlQRnRJRy9CVS9Fb1l2M0FNU1A5UWJCTXRXSkIvcTd2QStZMUFrZEJiYUNuaGFkK1FUWGwKY1VkSzRabHZ1NVdFWkxLdC9OMlU1RGQwaFh4RXBuRlo3L01SNVRnRVl2NFl3aUpHeWNyRTFKWGVSU2MrM21DWQpKekVzYjJPWTBTZE83YjBMcWdqM2hVa0RtcEdVS2NoQlQyaGw0NWJ5ak4valZjUW1rb29lYUgzSCt2R2IvNzhVCkV3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
-     },
-     {
-       "id": 4,
-       "publicKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBb3pVaGFzSG9HeE1YS3pUbzgrSHcKWGV0enJtWENYOTdteXBpaHhjL2wxSEllSVVwV2V3NkFNMzlPd1JQZ2VVMFZ3QmQ2NHZhbzZsTTNaQWxTdVZlMgpablN0T01JckJTWGVsYkc0b1BrRG5xZkNNbGJma1RNRlhXVFowdE1IdGJwVkU3N2o0aEpxaUI3ZU13YitwNXUxClovNmVxWjZmRWRnODI5MzN3ZUhhVWNzd2ZJQmhYNlNaUjNlMkJvRUJ2bHljNE5ENEFoNVFaZjMrRWpxSit5dHYKc3hiRm5MNUpLWWhjSlc4YmtCdzNoM2VreUYyY2I2eUE3M3dsTzZhWklaRWJ4QkE0WDl4WjhMSFBaNHJYWG9GbwpoMVFCd1IxOUVhemF5b0h1TmJkWGpBbU9hc1ViT0ttNFJBdk9ya1FwZ1I4S0J4NGMzczk0OFlidTBJRktQb0NICkJ3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
-     }
-   ],
-   "shares": {
-     "publicKeys": [
-       "0x8c1c39201c9369f8d2b9518acfc42668d9fa4f3fd10d0f0ae86e09ce9df426663bebe35b3e3cbc1a4aa5d5bdbb4ddc9e",
-       "0xaec0884aa3106ce9e0c88fb547008c3f69d2034361d703d6b5aeb81d7163c921b25f675f3f5a1cdd2a7d2ede4de4d375",
-       "0x9451bd07c51792d307194cadd9fba98ffaa270a056a55a8d4527f0ec43a8f6ec12b599b41d606c7d3789490e67e38d3b",
-       "0xa4bc3e8946cf35f5e784b943bae0e360170265b9ebc84b59f8ccdff62a5502459f8cbb2486d6df5199bd9403b6930a02"
-     ],
-     "encryptedKeys": [
-       "euiSJsCKYsajR0wdcCMhldp0wUfZTclQ6O5vvBYcXFWMZzfiCiNh9ADfqHQs0hWGXG6TvcNp6luvf/D/dbgE0LnU3qunWr4Qeir2QF3tUsP2AEo/32KvHF56xzSSLV/nKOycses+6CLGPaU8nQshLXxWu91QxZdirS2K5fLH+p1+QNFIHl7i6U+cFhnfqkzImyOX3IqE+hTmA8QBZAyPVvp4Bt/W3n4H1Czyo7NtK77Kv+ES/7Uz81BfeXqQC0jmyWxV7oJpFURFpKL3xGisRyUxCXbfzzaMkkQBxF+VJ71kr0eeNUEmN8FDJVzObbAcJbO8OftAXs46XasL7Hq2SA==",
-       "Nxc7kx6edLM8GwmwYXNHMx9UDbfvt5DHDwdL0mQzr1gBLjD9nJHiL9ne8ZdcnHCZOBXjZzzFATV4ji8oUBHvrXEanz1c/aZLZNyMK0fI4CnKkBvpD5RFsq/ovJTSYP765jWAi715zFjgesZ11lyEslzEEZZCglxd4Zvf3t/97QynGWGqfqVxWlnnqz+PO5cF1DzdMX3/txjwjmlOjj/EY36Zzw+cHY8Iz15aBv/ZI0MfJ787xefnUbHcCzKloaFb0/USFzJVQIB2wPPLtMagZjJ2ISmlIzYvb5NS/CyPzbKZSCP2huMkptu2Bw8Bef5755zW6mfrU2V+2oUO4VrCBA==",
-       "Gl2if+JhOIPUHFFN4gZSX2Q0WK5IFtti5dh/h+7NeIyZk6FNr5NO+eXSPN8EFvq8m+FpwEJwosOZAOzgMmBxf/MUy+hS6d7p3ixjlUppy3vvbicoe7laTd6RHN28T4unHdgkUvKVLPeQjrSgynvjV6i9FxLlzwghfBfkGnH1CKFRuJX5trIuIlqB6IiPdUepQ/1Zbq6vuaqjgbwSQe3F64vBBLv3PjC0fj2fLAow5vsBH+lP2T5eahYeALK0oIUvxKwY+9zABe86yjFGtiPyPh0YCJ7w7KukHfaZJKcggdIErNjWBHGvnbsPra0qA4TtC63D+S3kHxYFhp0cwGetqg==",
-       "P9AGXZkgNd4p7urg0vEq6DsFXcbJLbAFnYm18WOMlSlWQDXeR7gLZ79h2XCJdleVPOSsyTCsAY9+aQySsN0edaOgKauFY3g/pMf0n/5ZXu1vfSsTodXv8c62zl/Yq7IjRi9NnAJel0sDEr5je186QVjJp/PiOATYaeK6q+X2d1jXBIa3qxvVN7tPS4oSDkw+u2+xlzs6GxeTxnebKq9A/+wgoyFt6fJRl4eg4HhD3yvCv8R/Y9a/NygMMGtcoBWyxH4Hed6+6ec7pZGhtyMaigb2dCSP4+6AuokZGHZv6K6IgrtAJt+Da/LLb2oryLcC5oQ6Cg6Qa1TKWXuYA66FHQ=="
-     ]
-   }
- },
- "payload": {
-   "readable": {
-     "publicKey": "0xb7dd6a82a54215abf4028269v1b7e600a0d9d40571a8a0fd6828d9bbed47ba543e584d70e5c657ce03c4c4a12c2b1143",
-     "operatorIds": [
-       1,
-       2,
-       3,
-       4
-     ],
-     "shares": "0x01828c1c39201c9369f8d2b9518acfc42668d9fa4f3fd10d0f0ae86e09ce9df426663bebe35b3e3cbc1a4aa5d5bdbb4ddc9eaec0884aa3106ce9e0c88fb547008c3f69d2034361d703d6b5aeb81d7163c921b25f675f3f5a1cdd2a7d2ede4de4d3759451bd07c51792d307194cadd9fba98ffaa270a056a55a8d4527f0ec43a8f6ec12b599b41d606c7d3789490e67e38d3ba4bc3e8946cf35f5e784b943bae0e360170265b9ebc84b59f8ccdff62a5502459f8cbb2486d6df5199bd9403b6930a027ae89226c08a62c6a3474c1d70232195da74c147d94dc950e8ee6fbc161c5c558c6737e20a2361f400dfa8742cd215865c6e93bdc369ea5baf7ff0ff75b804d0b9d4deaba75abe107a2af6405ded52c3f6004a3fdf62af1c5e7ac734922d5fe728ec9cb1eb3ee822c63da53c9d0b212d7c56bbdd50c59762ad2d8ae5f2c7fa9d7e40d1481e5ee2e94f9c1619dfaa4cc89b2397dc8a84fa14e603c401640c8f56fa7806dfd6de7e07d42cf2a3b36d2bbecabfe112ffb533f3505f797a900b48e6c96c55ee8269154445a4a2f7c468ac4725310976dfcf368c924401c45f9527bd64af479e35412637c143255cce6db01c25b3bc39fb405ece3a5dab0bec7ab64837173b931e9e74b33c1b09b0617347331f540db7efb790c70f074bd26433af58012e30fd9c91e22fd9def1975c9c70993815e3673cc50135788e2f285011efad711a9f3d5cfda64b64dc8c2b47c8e029ca901be90f9445b2afe8bc94d260fefae635808bbd79cc58e07ac675d65c84b25cc4119642825c5de19bdfdedffded0ca71961aa7ea5715a59e7ab3f8f3b9705d43cdd317dffb718f08e694e8e3fc4637e99cf0f9c1d8f08cf5e5a06ffd923431f27bf3bc5e7e751b1dc0b32a5a1a15bd3f512173255408076c0f3cbb4c6a06632762129a523362f6f9352fc2c8fcdb2994823f686e324a6dbb6070f0179fe7be79cd6ea67eb53657eda850ee15ac2041a5da27fe2613883d41c514de206525f643458ae4816db62e5d87f87eecd788c9993a14daf934ef9e5d23cdf0416fabc9be169c04270a2c39900ece03260717ff314cbe852e9dee9de2c63954a69cb7bef6e27287bb95a4dde911cddbc4f8ba71dd82452f2952cf7908eb4a0ca7be357a8bd1712e5cf08217c17e41a71f508a151b895f9b6b22e225a81e8888f7547a943fd596eaeafb9aaa381bc1241edc5eb8bc104bbf73e30b47e3d9f2c0a30e6fb011fe94fd93e5e6a161e00b2b4a0852fc4ac18fbdcc005ef3aca3146b623f23e1d18089ef0ecaba41df69924a72081d204acd8d60471af9dbb0fadad2a0384ed0badc3f92de41f1605869d1cc067adaa3fd0065d992035de29eeeae0d2f12ae83b055dc6c92db0059d89b5f1638c9529564035de47b80b67bf61d970897657953ce4acc930ac018f7e690c92b0dd1e75a3a029ab8563783fa4c7f49ffe595eed6f7d2b13a1d5eff1ceb6ce5fd8abb223462f4d9c025e974b0312be637b5f3a4158c9a7f3e23804d869e2baabe5f67758d70486b7ab1bd537bb4f4b8a120e4c3ebb6fb1973b3a1b1793c6779b2aaf40ffec20a3216de9f2519787a0e07843df2bc2bfc47f63d6bf37280c306b5ca015b2c47e0779debee9e73ba591a1b7231a8a06f674248fe3ee80ba891918766fe8ae8882bb4026df836bf2cb6f6a2bc8b702e6843a0a0e906b54ca597b9803ae851d",
-     "amount": "Amount of SSV tokens to be deposited to your validator's cluster balance (mandatory only for 1st validator in a cluster)",
-     "cluster": "The latest cluster snapshot data, obtained using the cluster-scanner tool. If this is the cluster's 1st validator then use - {0,0,0,0,0,false}"
-   }
- },
- "createdAt": "2023-03-05T14:46:22.094Z"
+  "version": "v4",
+  "createdAt": "2023-05-30T14:44:08.498Z",
+  "data": {
+    "publicKey": "0x8ad8857ca00986ec2619961fb159bea47463f19d77c60e37fb6f9277420c8bdfe9bde37e51cbe90a7c127a4ead9f86cb",
+    "operators": [
+      {
+        "id": 29,
+        "operatorKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBNDNQbkNpTzN4cEhLa3ZuQkJJbWYKWCtRb09BS0xvSmNOR2lNL2cwcHJFV01lVFhkdEVkUHRYRzlXNXBZYTBkOGszUnE3aHM2QjN5Slh2VXVKRktxRgpIUWROZUFib0xveE9Pd1hlaGo4Sm5iR2Rtb3czeEVaSm5JczlzODhGMnBEV3F1OTNTdUYvaDhKMFEvbjF1cHdVCnU4YTNnSW9HMDFXVzdtc25aVmJ1bEEvQXBNaEZ6SjdFUTA4TnFHYW1DcU1MMzl4SHNmS2t5Z1lYY21ORGdZZHAKT0RvZGNSeTZTTjY0U29Gd3JQT3hvKzBKeGJCL1FlNjNNMDc1Y3B6TzhhMkdKTzVNd1ZZakNaZ0tiTW9DNDZCcwpKbkkvU3c5aWgwVkRNUW1LRFRiZ3hVTE5ZY1JRdE8ybHBsUm5rRlVmaGtFT2lYOXV1SHpJOEhsVnVxOE9IZUI5CldRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
+      },
+      {
+        "id": 30,
+        "operatorKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBMC9zbTE3cUpFRGNDNG13OHhvNDQKZ1NuaUVXeGQ4L0hHSXllU2hZNWpDajJNajA5em1Dd3F1UU1CalVlalBJb1p2VG0wM1dtVlVPaWRBZ2tzY3V0cAp5UXVRL3JaZ3FzVXhjZDBUamQwN2FhRzVwNGQ2ZjF0ajhNcXkrMjFENjcvcmxKaGZaZVcyNFIzY2dNSTJFWWNKCitud0gzZVFISXgzcGNlWjNlZGVhOU5SRlNYd245MWplaWVmbkgxMEtCc3hxTE1EaVk1MGQxRitpNjVJMUY0aEQKRHpVVHpTMHJLQXNzdU1VR1Z5QlczMVdxK0V6MVBKR0Rka2NXZVBDVy8rd1RlTmovV2xWU2M1SXY0TzJSR2xyeApLRndpRmw1dUdBbVRvRHJRa1ltcVFxeGlldzkrUUovdUN3ZlRQeExvWS9BWlowMjU3eFB1b2F5N1JhOC9qMytaCmF3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
+      },
+      {
+        "id": 31,
+        "operatorKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBMFBXV0RBbE11L2JYMXFPN0lpREcKdHI0QjRkZkJpb2RiWWJnbXA5Wld5ZFJXYnRpbjR2elUyTFlnaGdoTnAvdkE0Qmg5WDFjbWhacjNQaEFiT3BSSApqZld4RVJiRGJxcVZtUGZSaU5Wa3FhUk9XLzg5R3VZZytQdjBwTTBrbTdJb3dIS1k3WVpHMkRiK3FpV25rTnplClJJTloyUi80RXg2L2xBUGpZMFhHeWJ5NVFhb0tLMWRsY1JFQ3JYU2RrRFBRWFkwam1DWjhYZ3ROOHJhQ1RvSmUKRTgwWUk5NVFPdkFhWG5SYldqekg3SjNYTnFGb3pNbXdya2VBUUh3YUNkaWl3WEFHdlVWWjkyTk9NbmQwOThlZQorVll5b0R3THBrbWIrTFFJa2drOFRTeTJKc2d0THk1N2o4aU9QNitCV0RDN25XVVUrMzUwL3VWOFVXL2FGK3NDCkh3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
+      },
+      {
+        "id": 32,
+        "operatorKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdFAyMW42Z0IxYmdUMWFkb3RzY2oKdGVRZXNPZEZRZDdKUDh6VVdWY0ZwOHdReS8rZ1lVVXNOVHhZZDFDK1d1WXRncHcxTmdHZDYyYVNFVWtBZ0Y0Uwp4VjdsVkU0WmhzYU5Ic3QzVGorOWltOFFPU3hqUnlHVzZzRzJUMkRaOTc2ekRoMjdUWmJCN1l4c2ovNUpTdVBDCkhQSTIzTlJEYVM0Wkd1TW5IVjVxdHN5a25GRERyQytZK2w5OG9XRGYvbnBUVkYvQ3NkQUw3bEpTR3Q2WlQya2gKMkFEV2VTNmkwcXIwaEZJblJYMld3dmx3aHZpUlhJYVZ6cHJXTkxpZEYyWWFvWkJwbWs3dm9ReVp6dUNHekRqdQpPQzBSakdsZzIya1g0UzMwZUVXRTV0dVZEZXdNcjNvZ0NmR0owQTJGM0w3QjlsRUU4WnlzbVlmVG9KQlM1VU9OCkJ3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
+      }
+    ]
+  },
+  "payload": {
+    "publicKey": "0x8ad8857ca00986ec2619961fb159bea47463f19d77c60e37fb6f9277420c8bdfe9bde37e51cbe90a7c127a4ead9f86cb",
+    "operatorIds": [
+      29,
+      30,
+      31,
+      32
+    ],
+    "sharesData": "0x8e1f1761e7ab0224af98d3a58d417c43deb996edb81d46dfeedfa04ad36c3c9c104424d6bcfc9a12862c9e00c9c623cb17c7be89a1f75c85c25f16749ea3a0a0c79bb3ed30857dfeefbeba80225d6a1d1dc86ca47b1d20f8eaf4f24b866696b782b7eec212d9388bd55868dc50729e5a22ebf7343a7cc4c5191ef9bf381eb7f9b805e92a359f7c71598e0ed12f730390acf9be7b22af4bec63a36604255f456bfc559f04ba8421092a2d45b199d7ecc3820ebf9e94f961ff52ff1bcb7b00e6bda785bfad38c720cee5c057b26d870d918ec46fd65e551e4faa400d8b81c7cd22f4cfbd1fe5cf27b4e6d864dd5375e7da97e4208bcbede92f8002cb1008ed8c046314d9d3189c30d6458d2dc29d097699c8dc17f72401bfd99abb588091d2439d7cd077f067b994cb9d8687de4ac7c99bb450aca1e6f6d23500f84eaeb49864363740fd107db808f91b6a0dce597c6224b7632a0952d57783e95c95990af462faa0eb530e4b20aaaf74e7e50a1e603fb23e1989afacfedd95c8a9bb228f96004b33cf047d6f837dbd833b7eadd7bee34cf3c1956b7fdc06c571b44635c0c098954254e9f3a2602c09df5b626ede2829ffa951e36f46cf33e6c93073d8bee420cb817fb94474e5b670c46cad60e6b50cfb6d0bcadee462dde68c3a77646b3af9ec8d411603b4fe458efbcf875a457f04427a0cc1e3397894cd4e4dc9bdbe0e88076a9d6624d9d18a7c01a893e371347fc4d855a1a4011c9d4923ce721287d2fa370c3fafac24060b1e9ebdeb7b1d2d22ff09c73350211ea57404521b577007f3ddf9050846f07dd1f751c8703794e69c091383deb433fdef61570b85eb8a3ca012d7d96a9f2d91456a8ae37664cedea7d9ec2c4b90449d4cdae135a5dbc74e1ded9f4ed1adf7bf3320ff5289ac3497dbf68d86c3cf98c16b0963796abefc1bd01ba74f4cd5a4b1c4092c83d0a4e1a151c7e40591548964b85833eccbaab8917f3ad55bef9d87074f8aff29c21ea2b9e8251c8fb9eda5fc1c6ec813bd2f0060cdb29eee836b260946805ae4ce0bf7186302054b9f463328a643315bebb306d5eb933d5187ac25bab80a41862221f56c2d4914cbbc5041766d1c64374d00042b333fa4be3c92d0cff27316f8700fa488313af41b3865fbff86c11904b49fc486ff075da45ffd4f7eb1c472ac8cff2815eab3af2274d378efa4d8340e7a74570510f05b6cfabb03b5fbe0ac9dabaf9c4c28f8a36fe4ea6811b24b27fdfdbc5d5a65b50496fe5265f36624477a69bf5349607a7b364509b6eb656983e9f45bfbc0c1621dd91661c863047078c34f6c41947811ae927e3d77317b775882749b3ed44601471c1c6a459b6a625d2b097eed7aec5b2ea8db37e8f3705b5a3c1d9f9bbd87f47af96ba70f68465aea53911e29b87f53a9dcb79c3ba837a42db3e2b0cab002d4418d012bc0956530cce54ea1e5d3a818e3ba19d282c5c2f95bc8a7832273d0f02e7a61ff739f2829b013d2b4973745d20a30bb01a96def88e5ea2e91fffd3040309074e7d2688faba670df28c256790ae17213261d70b841ecf9b7ddffefb10a2f08cc696b4813d98d7128242c8c136ce2ba545506329dc071bcb1393fed40c012049b6137d1189ba70e935ed5a8a35302efa6f0e82a7419591be9bbc61da551d9ca79e88e30472db86722ae799fd2c37eb8ba9023e6d0762701dde11cab97ad199418160aff7ee062c3ceed05ded621395b2e29dd0a54f0c0dc31f097360b11fc6b0c1362616d6450a3881ea34149c5be7ceaafce18cb62a1f1be3b984c9a937d31b7ba8714493239afa017e6145dc160d30ba6fd846b6f19f51d9f79c4fa9f",
+    "amount": "Amount of SSV tokens to be deposited to your validator's cluster balance (mandatory only for 1st validator in a cluster)",
+    "cluster": "The latest cluster snapshot data, obtained using the ssv-scanner tool. If this is the cluster's 1st validator then use - {0,0,0,true,0}"
+  }
 }
-
 ```
 {% endcode %}
