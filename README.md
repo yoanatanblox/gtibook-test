@@ -4,7 +4,9 @@ The SSV network enables the distribution of validator operations between non-tru
 
 ![](.gitbook/assets/0.png)
 
+{% hint style="warning" %}
 In order to distribute your validator, you must have an activated (deposited) validator on the Beacon Chain.
+{% endhint %}
 
 ## How to Run a Distributed Validator <a href="#_qbxicu1vhvv3" id="_qbxicu1vhvv3"></a>
 
@@ -23,15 +25,17 @@ Validators are managed within Clusters - the group of operators that were select
 Running a distributed validator is outlined by the following steps:
 
 1. Select the group of operators to manage your validator.
-2. Split your validator key to shares.
-3. Retrieve your cluster’s latest snapshot data.
+2. Retrieve events data for your account and cluster
+3. Split your validator key to shares.
 4. Register your validator to the network.
 
 ![Process Diagram](.gitbook/assets/1.png)
 
 #### 1. Operator Selection <a href="#_tulnbjthau7t" id="_tulnbjthau7t"></a>
 
-Select your preferred group of operators from the operator registry of the SSV network - 4 operators are required for each cluster.
+Select your preferred group of operators from the operator registry of the SSV network.
+
+The number of cluster operators you select must be **3f+1** compatible, whereas **f** is the number of faulty operators that your cluster could endure (more operators, greater fault tolerance)  - e.g. 4, 7, 10, 13.
 
 For each chosen operator, you must fetch its network assigned **id** and its corresponding **key**.
 
@@ -41,7 +45,11 @@ The entire operator registry can be viewed via the ssv.network’s [explorer](ht
 
 
 
-#### 2. Split Validator Key to Shares <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
+#### 2. Retrieve Events Data <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
+
+
+
+#### 3. Split Validator Key to Shares <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
 
 To assign the validator operation to the cluster of your selected operators, you must split your validator key to shares.
 
@@ -49,21 +57,11 @@ Use the [SSV Keys](tools/ssv-keys/ssv-keys-cli.md) tools to extract your validat
 
 
 
-#### 3. Retrieve Cluster Snapshot Data <a href="#_vjco67d7q0gy" id="_vjco67d7q0gy"></a>
-
-Cluster snapshots are required for SSV smart contract transactions with cluster related functions which require the **cluster object** as input.
-
-Cluster snapshots are updated after each transaction with a cluster related function, and will emit a new **cluster object** (the latest snapshot) which will be required for making the succeeding transaction.
-
-Use the [Cluster Scanner](tools/ssv-scanner/) tools to retrieve the latest snapshot data for your validator’s cluster.
-
-
-
 #### 4. Network Registration <a href="#_j9fra6w5d8er" id="_j9fra6w5d8er"></a>
 
 To signal your cluster to start operating your validator, you must register your validator to the network by broadcasting the [registerValidator()](smart-contracts-v3/ssvnetwork.md#public-registervalidator-publickey-operatorids-shares-amount-cluster) transaction to the ssv.network contract:
 
-<table><thead><tr><th width="136.33333333333331">Parameter</th><th width="95">Type</th><th>Description</th></tr></thead><tbody><tr><td>publicKey</td><td>bytes</td><td>The validator’s public key.</td></tr><tr><td>operatorIds</td><td>uint64[]</td><td>List of all operator’s ids which were selected during the “Operators Selection” step.</td></tr><tr><td>shares</td><td>bytes[]</td><td>Shares which were produced during the “Key Splitting” step.</td></tr><tr><td>amount</td><td>uint256</td><td>Amount of SSV tokens to be deposited as payment (not mandatory). See <a href="https://docs.ssv.network/learn/stakers#validator-funding">validator funding</a> to calculate how much funding is needed to run each validator.</td></tr><tr><td>cluster</td><td>tuple[]</td><td><p>Object containing the latest cluster snapshot data, produced during the “Retrieve Cluster Snapshot” step - obtained using the <a href="tools/ssv-scanner/">Cluster-Scanne</a>r tool.</p><p></p><p><strong>If this is the 1st validator within a specific cluster (unique set of operators), use - {0,0,0,0,0,false}</strong></p></td></tr></tbody></table>
+<table><thead><tr><th width="136.33333333333331">Parameter</th><th width="95">Type</th><th>Description</th></tr></thead><tbody><tr><td>publicKey</td><td>bytes</td><td>The validator’s public key.</td></tr><tr><td>operatorIds</td><td>uint64[]</td><td>List of all operator’s ids which were selected during the <a href="./#_tulnbjthau7t">“Operators Selection”</a> step.</td></tr><tr><td>sharesData</td><td>bytes[]</td><td>sharesData which were produced during the “<a href="./#_x02jw9rs53s3-1">Key Splitting</a>” step - obtained using the <a href="tools/ssv-keys/">SSV Keys</a> tool.</td></tr><tr><td>amount</td><td>uint256</td><td>Amount of SSV tokens to be deposited as payment (not mandatory). See <a href="https://docs.ssv.network/learn/stakers#validator-funding">validator funding</a> to calculate how much funding is needed to run each validator.</td></tr><tr><td>cluster</td><td>tuple[]</td><td>Object containing the latest cluster snapshot data, produced during the “Retrieve Events Data” step - obtained using the <a href="tools/ssv-scanner/">SSV-Scanne</a>r tool.<br><br><strong>If this is the 1st validator within a specific cluster (unique set of operators), use - {0,0,0,true,0}</strong></td></tr></tbody></table>
 
 You can construct the transaction by yourself or through using the partial payload generated by the [SSV Keys](tools/ssv-keys/) tool used in the “Key Splitting” step.
 
