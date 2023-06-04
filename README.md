@@ -47,13 +47,21 @@ The entire operator registry can be viewed via the ssv.network’s [explorer](ht
 
 #### 2. Retrieve Events Data <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
 
+SSV network’s developer tools and smart contracts transactions require off-chain state inputs for operation and security.
+
+Use the [SSV Scanner](https://ssv-network.gitbook.io/docs-v4/tools/ssv-scanner) tools to retrieve the latest **registration nonce** and **cluster snapshot** for your account and validator cluster - they will both be required as inputs for the next step.
+
+{% hint style="info" %}
+Please note that as your **registration nonce** and **cluster snapshot** data updates after each transaction with cluster related functions, it’s required to fetch them before each validator registration.
+{% endhint %}
+
 
 
 #### 3. Split Validator Key to Shares <a href="#_x02jw9rs53s3" id="_x02jw9rs53s3"></a>
 
 To assign the validator operation to the cluster of your selected operators, you must split your validator key to shares.
 
-Use the [SSV Keys](tools/ssv-keys/ssv-keys-cli.md) tools to extract your validator key from your keystore file and split it to shares.
+Use the [SSV Keys](tools/ssv-keys/) tool to extract your validator key from your keystore file and split it to shares.
 
 
 
