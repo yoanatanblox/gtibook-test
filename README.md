@@ -29,7 +29,7 @@ Running a distributed validator is outlined by the following steps:
 3. Split your validator key to shares.
 4. Register your validator to the network.
 
-![Process Diagram](.gitbook/assets/1.png)
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p><em>Process Diagram</em></p></figcaption></figure>
 
 #### 1. Operator Selection <a href="#_tulnbjthau7t" id="_tulnbjthau7t"></a>
 
