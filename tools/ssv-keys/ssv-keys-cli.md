@@ -52,7 +52,7 @@ yarn cli shares --keystore=<KEYSTORE_FILE_FILE> --password=<FILE_PASSWORD> --ope
 
 **Output**
 
-A json file will be generated with the shares and the transaction payload required for validator registration ([registerValidator()](../../smart-contracts-v3/ssvnetwork.md#public-registervalidator-publickey-operatorids-shares-amount-cluster)).
+A json file will be generated with the shares and the transaction payload required for validator registration ([registerValidator()](../../developers/smart-contracts/ssvnetwork.md#public-registervalidator-publickey-operatorids-shares-amount-cluster)).
 
 **Example:**
 

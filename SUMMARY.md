@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Jato v2](README.md)
+
 ## Get started
 
-* [Run a Distributed Validator](README.md)
+* [Run a Distributed Validator](<README (1).md>)
 
 ## Tools
 
@@ -13,7 +15,8 @@
   * [SSV Scanner CLI](tools/ssv-scanner/ssv-scanner-cli.md)
   * [SSV Scanner SDK](https://github.com/bloxapp/ssv-scanner#integration-in-your-projects)
 
-## Smart Contracts v3
+## Developers
 
-* [SSVNetwork](smart-contracts-v3/ssvnetwork.md)
-* [SSVNetworkViews](smart-contracts-v3/ssvnetworkviews.md)
+* [Smart Contracts](developers/smart-contracts/README.md)
+  * [SSVNetwork](developers/smart-contracts/ssvnetwork.md)
+  * [SSVNetworkViews](developers/smart-contracts/ssvnetworkviews.md)
