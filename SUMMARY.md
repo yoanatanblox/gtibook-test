@@ -14,6 +14,7 @@
 * [SSV Scanner](tools/ssv-scanner/README.md)
   * [SSV Scanner CLI](tools/ssv-scanner/ssv-scanner-cli.md)
   * [SSV Scanner SDK](https://github.com/bloxapp/ssv-scanner#integration-in-your-projects)
+* [SSV API v4](https://api.ssv.network/documentation/#/)
 
 ## Developers
 
