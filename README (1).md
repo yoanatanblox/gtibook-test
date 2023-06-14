@@ -31,8 +31,6 @@ Running a distributed validator is outlined by the following steps:
 
 <figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption><p><em>Process Diagram</em></p></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>Process Overview</p></figcaption></figure>
-
 #### 1. Operator Selection <a href="#_tulnbjthau7t" id="_tulnbjthau7t"></a>
 
 Select your preferred group of operators from the operator registry of the SSV network.
