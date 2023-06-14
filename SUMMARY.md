@@ -18,6 +18,5 @@
 
 ## Smart Contracts
 
-* [Smart Contracts](smart-contracts/smart-contracts/README.md)
-  * [SSVNetwork](smart-contracts/smart-contracts/ssvnetwork.md)
-  * [SSVNetworkViews](smart-contracts/smart-contracts/ssvnetworkviews.md)
+* [SSVNetwork](smart-contracts/ssvnetwork.md)
+* [SSVNetworkViews](smart-contracts/ssvnetworkviews.md)
