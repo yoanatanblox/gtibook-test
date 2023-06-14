@@ -16,8 +16,8 @@
   * [SSV Scanner SDK](https://github.com/bloxapp/ssv-scanner#integration-in-your-projects)
 * [SSV API v4](https://api.ssv.network/documentation/#/)
 
-## Developers
+## Smart Contracts
 
-* [Smart Contracts](developers/smart-contracts/README.md)
-  * [SSVNetwork](developers/smart-contracts/ssvnetwork.md)
-  * [SSVNetworkViews](developers/smart-contracts/ssvnetworkviews.md)
+* [Smart Contracts](smart-contracts/smart-contracts/README.md)
+  * [SSVNetwork](smart-contracts/smart-contracts/ssvnetwork.md)
+  * [SSVNetworkViews](smart-contracts/smart-contracts/ssvnetworkviews.md)
