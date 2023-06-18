@@ -27,8 +27,8 @@ For access, please reach out to the core team.
 | **Contract**    | **Address**                                |
 | --------------- | ------------------------------------------ |
 | SSV Token       | 0x3a9f01091C446bdE031E39ea8354647AFef091E7 |
-| SSVNetwork      | 0x9d3F908cB3b132379A97b0E0f8171F0B42756E28 |
-| SSVNetworkViews | 0x9d3F908cB3b132379A97b0E0f8171F0B42756E28 |
+| SSVNetwork      | 0x5a03e2a7e3A63E403f4Bd08421c88B4726eCbfB7 |
+| SSVNetworkViews | 0x807E241D3118fC8F231948C60aa42a4C606C2545 |
 
 #### Testnet v4 ABI
 
