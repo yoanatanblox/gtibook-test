@@ -3,9 +3,9 @@
 {% hint style="warning" %}
 **Jato v2 is a closed testnet.**&#x20;
 
-To register validators and operators to the network you must whitelist your owner address (applies to both webapp and smart contracts).&#x20;
+To participate, you must whitelist the Ethereum address (owner address) which will used to register your operators or validators to the network (applies to both webapp and smart contracts).&#x20;
 
-For access, please reach out to the core team.
+For access, please fill out this [form](https://forms.monday.com/forms/9c6210831e15c5265666ce43975bb01a) - you will receive a email confirmation once your address has been whitelisted.
 {% endhint %}
 
 ### Webapp <a href="#_bhl3qnbkn7py" id="_bhl3qnbkn7py"></a>
