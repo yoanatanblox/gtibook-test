@@ -20,3 +20,7 @@
 
 * [SSVNetwork](smart-contracts/ssvnetwork.md)
 * [SSVNetworkViews](smart-contracts/ssvnetworkviews.md)
+
+## Run a Node
+
+* [Installation Guide](run-a-node/installation-guide.md)
