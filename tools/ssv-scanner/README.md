@@ -39,5 +39,5 @@ The registration nonce increments after each validator registration and does not
 The registration nonce is required as input for the [SSV Keys](../ssv-keys/) tool, which outputs the **sharesData** payload required for the [validator registration](https://docs.ssv.network/developers/smart-contracts/ssvnetwork#public-registervalidator-publickey-operatorids-shares-amount-cluster) transaction in the SSV contract..
 
 {% hint style="info" %}
-Please note that alternatively, instead of using this tool to retrieve the registration nonce, you could just keep track of the number of validator registrations you have made and use it as the input for the succeeding validator registrations..
+Please note that alternatively, instead of using this tool to retrieve the **registration nonce**, you could just keep track of the number of validator registrations you have made and use it as the input for the succeeding validator registrations..
 {% endhint %}
