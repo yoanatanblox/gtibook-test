@@ -27,7 +27,7 @@ For access, please fill out this [form](https://forms.monday.com/forms/9c6210831
 | **Contract**    | **Address**                                |
 | --------------- | ------------------------------------------ |
 | SSV Token       | 0x3a9f01091C446bdE031E39ea8354647AFef091E7 |
-| SSVNetwork      | 0x5a03e2a7e3A63E403f4Bd08421c88B4726eCbfB7 |
+| SSVNetwork      | 0xC3CD9A0aE89Fff83b71b58b6512D43F8a41f363D |
 | SSVNetworkViews | 0x807E241D3118fC8F231948C60aa42a4C606C2545 |
 
 #### Testnet v4 ABI
