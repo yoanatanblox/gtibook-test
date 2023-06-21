@@ -37,22 +37,31 @@ The cluster snapshot breakdown and the cluster object in transaction payload for
 **Example:**
 
 ```json
+Cluster snapshot:
+┌─────────────────┬────────────────────────┐
+│     (index)     │         Values         │
+├─────────────────┼────────────────────────┤
+│ validatorCount  │          '1'           │
+│ networkFeeIndex │          '0'           │
+│      index      │      '4647545440'      │
+│     active      │          true          │
+│     balance     │ '11000000000000000000' │
+└─────────────────┴────────────────────────┘
 {
-  "block": 8508854,
+  "block": 9215770,
   "cluster snapshot": {
     "validatorCount": "1",
-    "networkFee": "0",
     "networkFeeIndex": "0",
-    "index": "0",
-    "active": true
-    "balance": "1000000000000",
+    "index": "4647545440",
+    "active": true,
+    "balance": "11000000000000000000"
   },
   "cluster": [
     "1",
     "0",
-    "0",
+    "4647545440",
     true,
-    "1000000000000"
+    "11000000000000000000"
   ]
 }
 ```
@@ -78,5 +87,5 @@ The validator registration nonce of the provided owner (to be used in the next v
 **Example:**
 
 ```json
-Owner nonce: 2  
+Next nonce: 2  
 ```
