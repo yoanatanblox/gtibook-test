@@ -106,7 +106,7 @@ chmod +x install.sh
 Your Operator <mark style="color:green;">**Public Key (PK)**</mark> and <mark style="color:green;">**Secret Key (SK)**</mark> are generated with this command:
 
 ```bash
-docker run -d --name=ssv_node_op_key -it 'bloxstaking/ssv-node:latest' \
+docker run -d --name=ssv_node_op_key -it 'bloxstaking/ssv-node-unstable:latest' \
 /go/bin/ssvnode generate-operator-keys && docker logs ssv_node_op_key --follow \
 && docker stop ssv_node_op_key && docker rm ssv_node_op_key
 ```
@@ -147,10 +147,10 @@ Replace `<DB_FOLDER>` with the location you want the database to be stored e.g. 
 yq n db.Path "<DB_FOLDER>" | tee config.yaml
 ```
 
-Set the network to `prater`
+Set the network to `Jato V2`
 
 ```bash
-yq w -i config.yaml eth2.Network "prater"
+yq w -i config.yaml ssv.Network "jato-v2"
 ```
 
 Replace `<ETH2_NODE>` with the location of your Beacon Client e.g `http://localhost:5052`
@@ -209,7 +209,7 @@ To start your node, run the following Docker command in the same folder you crea
 docker run -d --restart unless-stopped --name=ssv_node -e \
 CONFIG_PATH=./config.yaml -p 13001:13001 -p 12001:12001/udp -v \
 $(pwd)/config.yaml:/config.yaml -v $(pwd):/data -it \
-'bloxstaking/ssv-node:latest' make BUILD_PATH=/go/bin/ssvnode start-node \ 
+'bloxstaking/ssv-node-unstable:latest' make BUILD_PATH=/go/bin/ssvnode start-node \ 
 && docker logs ssv_node --follow
 ```
 
