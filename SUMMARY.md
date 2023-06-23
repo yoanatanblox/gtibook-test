@@ -18,8 +18,8 @@
 
 ## Smart Contracts
 
-* [SSVNetwork](smart-contracts/ssvnetwork.md)
-* [SSVNetworkViews](smart-contracts/ssvnetworkviews.md)
+* [SSVNetwork](smart-contracts-v3/ssvnetwork.md)
+* [SSVNetworkViews](smart-contracts-v3/ssvnetworkviews.md)
 
 ## Run a Node
 
