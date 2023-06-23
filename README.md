@@ -32,4 +32,4 @@ For access, please fill out this [form](https://forms.monday.com/forms/9c6210831
 
 #### Testnet v4 ABI
 
-* [https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/abi/v0.3.2-rc.0](https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/abi/v0.3.2-rc.0)
+* [https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/v1.0.0/abi](https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/v1.0.0/abi)
