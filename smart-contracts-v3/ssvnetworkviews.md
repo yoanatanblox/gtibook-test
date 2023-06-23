@@ -60,15 +60,15 @@ Return values
 
 Description: Returns the minimum amount which a cluster has to have sufficient balance (liquidation collateral) to not be liquidated.
 
-| Parameter   | Type        | Description |
-| ----------- | ----------- | ----------- |
-| <p><br></p> | <p><br></p> | <p><br></p> |
+| **Parameter** | **Type**    | **Description** |
+| ------------- | ----------- | --------------- |
+| <p><br></p>   | <p><br></p> | <p><br></p>     |
 
 Return values
 
-| Parameter | Type    | Description                                                                                          |
-| --------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| amount    | uint256 | The minimum amount of SSV which a cluster has to have (liquidation collateral) to not be liquidated. |
+| **Parameter** | **Type** | **Description**                                                                                      |
+| ------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| amount        | uint256  | The minimum amount of SSV which a cluster has to have (liquidation collateral) to not be liquidated. |
 
 
 
@@ -109,15 +109,15 @@ Return values
 
 Description: Returns the maximum amount of validators an operator may manage.
 
-| Parameter   | Type        | Description |
-| ----------- | ----------- | ----------- |
-| <p><br></p> | <p><br></p> | <p><br></p> |
+| **Parameter** | **Type**    | **Description** |
+| ------------- | ----------- | --------------- |
+| <p><br></p>   | <p><br></p> | <p><br></p>     |
 
 Return values
 
-| Parameter       | Type   | Description                                  |
-| --------------- | ------ | -------------------------------------------- |
-| Validator limit | uint32 | amount of validators an operator may manage. |
+| **Parameter**   | **Type** | **Description**                              |
+| --------------- | -------- | -------------------------------------------- |
+| Validator limit | uint32   | amount of validators an operator may manage. |
 
 
 
