@@ -2,7 +2,7 @@
 
 The SSV Scanner tools enable users to retrieve events data from the SSV network [contract](https://docs.ssv.network/developers/smart-contracts).
 
-The tool is used for retrieving **cluster snapshots** and **registration nonce** which are required as inputs for our tooling and SSV contract transactions.
+The tool is used for retrieving **cluster snapshots** and **registration nonce** which are required as inputs for SSV tooling and smart contract transactions.
 
 ### Cluster Snapshots <a href="#_ppf7v63kx7uq" id="_ppf7v63kx7uq"></a>
 
