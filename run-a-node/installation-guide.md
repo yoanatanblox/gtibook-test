@@ -147,11 +147,21 @@ Replace `<DB_FOLDER>` with the location you want the database to be stored e.g. 
 yq n db.Path "<DB_FOLDER>" | tee config.yaml
 ```
 
-Set the network to `Jato V2`
+Set the network to `Mainnet/Testnet`
 
+{% tabs %}
+{% tab title="Mainnet" %}
+```bash
+yq w -i config.yaml ssv.Network "mainnet"
+```
+{% endtab %}
+
+{% tab title="Testnet (Prater)" %}
 ```bash
 yq w -i config.yaml ssv.Network "jato-v2"
 ```
+{% endtab %}
+{% endtabs %}
 
 Replace `<ETH2_NODE>` with the location of your Beacon Client e.g `http://localhost:5052`
 
