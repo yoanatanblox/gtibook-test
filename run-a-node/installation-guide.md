@@ -88,17 +88,21 @@ SSV node setup is also available using [eth-docker](https://eth-docker.net/Suppo
 Type (or copy and paste) these commands into your terminal on your SSV node machine that you should now be connected to:
 
 ```bash
-# Change to the root (admin) user on your machine 
-sudo su
+# Install dependencies.
+sudo apt-get update -y
+sudo apt-get install -y make curl git dnsutils wget
 
-# Download the installation script
-wget https://raw.githubusercontent.com/bloxapp/ssv/main/install.sh
+# Install yq.
+sudo wget -O /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+sudo chmod +x /usr/local/bin/yq
 
-# Change the permissions of the downloaded script so that it can be run
-chmod +x install.sh
-
-# Run the downloaded installation script
-./install.sh
+# Install Docker.
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get -y update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 ```
 
 ### Generate Operator Keys
@@ -139,75 +143,52 @@ Make sure to store and back up your operator's **Secret Key (SK)** in a safe pla
 
 ### Create Configuration File
 
-Fill all the placeholders (DB\_FOLDER, ETH2\_NODE, etc.) with actual values, and run the commands below to create a `config.yaml` file.
+Copy the following `config.yaml` file:
 
-Replace `<DB_FOLDER>` with the location you want the database to be stored e.g. `./data/db`
-
-```bash
-yq n db.Path "<DB_FOLDER>" | tee config.yaml
 ```
+global:
+  # Console output log level 
+  LogLevel: info
+  
+  # Debug logs file path
+  LogFilePath: ./data/debug.log
 
-Set the network to `Mainnet/Testnet`
+db:
+  # Path to a persistent directory to store the node's database.
+  Path: ./data/db
 
-{% tabs %}
-{% tab title="Mainnet" %}
-```bash
-yq w -i config.yaml ssv.Network "mainnet"
-```
-{% endtab %}
+ssv:
+  # The SSV network to join to
+  # Mainnet = Network: mainnet (default)
+  # Testnet = Network: jato-v2)
+  Network: mainnet
 
-{% tab title="Testnet (Prater)" %}
-```bash
-yq w -i config.yaml ssv.Network "jato-v2"
-```
-{% endtab %}
-{% endtabs %}
+eth2:
+  # HTTP URL of the Beacon node to connect to.
+  BeaconNodeAddr: http://example.url:5052
 
-Replace `<ETH2_NODE>` with the location of your Beacon Client e.g `http://localhost:5052`
+eth1:
+  # WebSocket URL of the Eth1 node to connect to.
+  ETH1Addr: ws://example.url:8546/ws
 
-```bash
-yq w -i config.yaml eth2.BeaconNodeAddr "<ETH2_NODE>"
-```
+p2p:
+  # Optionally provide the external IP address of the node, if it cannot be automatically determined.
+  # HostAddress: 192.168.1.1
 
-Replace `<ETH1_WEBSOCKET_ADDRESS>` with the location of your Execution Client e.g. `ws://localhost:8546`
+  # Optionally override the default TCP & UDP ports of the node.
+  # TcpPort: 13001
+  # UdpPort: 12001
 
-```bash
-yq w -i config.yaml eth1.ETH1Addr "<ETH1_WEBSOCKET_ADDRESS>"
+# Note: Operator private key can be generated with the `generate-operator-keys` command.
+OperatorPrivateKey: <operator-private-key>
+
+# Enable monitoring - https://github.com/bloxapp/ssv/tree/main/monitoring
+MetricsAPIPort "15000"
 ```
 
 {% hint style="warning" %}
 Make sure your `ETH1Addr` endpoint is communicating **over WebSocket** and **not over HTTP** in order to support subscriptions and notifications.
 {% endhint %}
-
-Replace `<OPERATOR_SECRET_KEY>` with your operator secret key [generated above](https://github.com/bloxapp/gitbook-docs/blob/main/run-a-node/operator-node/ssv-node-installation.md#generate-operator-keys) e.g. `LS0tLS1CRUdJTiBSU0EgUFJJVkF...`
-
-```bash
-yq w -i config.yaml OperatorPrivateKey "<OPERATOR_SECRET_KEY>"
-```
-
-<details>
-
-<summary><strong>Debug Configuration (Optional)</strong></summary>
-
-In order to see `debug` level logs, add the corresponding section to the `config.yaml` by running:
-
-```bash
-yq w -i config.yaml global.LogLevel "debug"
-```
-
-</details>
-
-<details>
-
-<summary><strong>Metrics Configuration (Optional)</strong></summary>
-
-In order to enable metrics, add the corresponding section to the `config.yaml` by running:
-
-```bash
-yq w -i config.yaml MetricsAPIPort "15000"
-```
-
-</details>
 
 ### Create and Start the Node using Docker
 
