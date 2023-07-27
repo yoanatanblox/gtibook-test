@@ -22,7 +22,15 @@ For access, please fill out this [form](https://forms.monday.com/forms/9c6210831
 
 * [https://github.com/bloxapp/ssv-network/tree/main/contracts](https://github.com/bloxapp/ssv-network/tree/main/contracts)
 
-#### Goerli Testnet v4
+#### Mainnet
+
+| **Contract**    | **Address**                                |
+| --------------- | ------------------------------------------ |
+| SSV Token       | 0x9D65fF81a3c488d585bBfb0Bfe3c7707c7917f54 |
+| SSVNetwork      | 0xDD9BC35aE942eF0cFa76930954a156B3fF30a4E1 |
+| SSVNetworkViews | 0xafE830B6Ee262ba11cce5F32fDCd760FFE6a66e4 |
+
+#### Goerli Testnet V4 (Jato V2)
 
 | **Contract**    | **Address**                                |
 | --------------- | ------------------------------------------ |
