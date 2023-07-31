@@ -183,7 +183,7 @@ p2p:
 OperatorPrivateKey: <operator-private-key>
 
 # Enable monitoring - https://github.com/bloxapp/ssv/tree/main/monitoring
-MetricsAPIPort "15000"
+MetricsAPIPort: "15000"
 ```
 
 {% hint style="warning" %}
