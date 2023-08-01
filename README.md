@@ -38,6 +38,7 @@ For access, please fill out this [form](https://forms.monday.com/forms/9c6210831
 | SSVNetwork      | 0xC3CD9A0aE89Fff83b71b58b6512D43F8a41f363D |
 | SSVNetworkViews | 0xAE2C84c48272F5a1746150ef333D5E5B51F68763 |
 
-#### Testnet v4 ABI
+#### ABI
 
-* [https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/v1.0.0/abi](https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/v1.0.0/abi)
+* [Mainnet](https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/mainnet/v1.0.0)
+* [Testnet](https://github.com/bloxapp/ssv-network/tree/contract-abi/docs/testnet/v1.0.0/abi)
