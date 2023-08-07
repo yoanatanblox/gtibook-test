@@ -80,7 +80,7 @@ ssh -i {key pair file name} ubuntu@{instance public IP you took from AWS}
 Once you're connected and on the command line, the next step is to install the SSV node software.
 
 {% hint style="success" %}
-SSV node setup is also available using [eth-docker](https://eth-docker.net/Support/BloxSSV/) and [Stereum Launcher](https://stereum.net/), so you can use those if you prefer.
+SSV node setup is also available using [eth-docker](https://eth-docker.net/Support/BloxSSV/) which can be used to run the execution and consensus clients as well.
 {% endhint %}
 
 ### Installation Script
