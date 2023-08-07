@@ -160,7 +160,7 @@ db:
 ssv:
   # The SSV network to join to
   # Mainnet = Network: mainnet (default)
-  # Testnet = Network: jato-v2)
+  # Testnet = Network: jato-v2
   Network: mainnet
 
 eth2:
