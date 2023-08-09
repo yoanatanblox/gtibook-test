@@ -195,11 +195,11 @@ Now, for the part you've been waiting for... actually starting your SSV node!
 To start your node, run the following Docker command in the same folder you created the `config.yaml` file in the previous step:
 
 ```bash
-docker run -d --restart unless-stopped --name=ssv_node -e \
-CONFIG_PATH=./config.yaml -p 13001:13001 -p 12001:12001/udp -v \
-"$(pwd)/config.yaml":/config.yaml -v "$(pwd)":/data -it \
-'bloxstaking/ssv-node-unstable:latest' make BUILD_PATH=/go/bin/ssvnode start-node \ 
-&& docker logs ssv_node --follow
+docker run -d --restart unless-stopped --name ssv_node -e \
+CONFIG_PATH=/config.yaml -p 13001:13001 -p 12001:12001/udp -p 15000:15000 \
+-v "$(pwd)/config.yaml":/config.yaml -v "$(pwd)":/data -it \
+"bloxstaking/ssv-node-unstable:latest" make BUILD_PATH="/go/bin/ssvnode" start-node && \ 
+docker logs ssv_node --follow
 ```
 
 ### Docker FAQ
