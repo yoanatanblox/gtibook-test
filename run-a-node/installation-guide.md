@@ -199,7 +199,7 @@ To start your node, run the following Docker command in the same folder you crea
 ```bash
 docker run -d --restart unless-stopped --name=ssv_node -e \
 CONFIG_PATH=./config.yaml -p 13001:13001 -p 12001:12001/udp -v \
-$(pwd)/config.yaml:/config.yaml -v $(pwd):/data -it \
+"$(pwd)/config.yaml:/config.yaml" -v $(pwd):/data -it \
 'bloxstaking/ssv-node-unstable:latest' make BUILD_PATH=/go/bin/ssvnode start-node \ 
 && docker logs ssv_node --follow
 ```
