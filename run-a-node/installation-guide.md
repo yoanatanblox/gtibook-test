@@ -110,9 +110,7 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 Your Operator <mark style="color:green;">**Public Key (PK)**</mark> and <mark style="color:green;">**Secret Key (SK)**</mark> are generated with this command:
 
 ```bash
-docker run -d --name=ssv_node_op_key -it 'bloxstaking/ssv-node-unstable:latest' \
-/go/bin/ssvnode generate-operator-keys && docker logs ssv_node_op_key --follow \
-&& docker stop ssv_node_op_key && docker rm ssv_node_op_key
+docker run -it --rm bloxstaking/ssv-node:latest /go/bin/ssvnode generate-operator-keys
 ```
 
 {% hint style="info" %}
