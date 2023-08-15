@@ -24,3 +24,4 @@
 ## Run a Node
 
 * [Installation Guide](run-a-node/installation-guide.md)
+* [MEV Configuration](run-a-node/mev-configuration.md)
