@@ -160,6 +160,10 @@ ssv:
   # Mainnet = Network: mainnet (default)
   # Testnet = Network: jato-v2
   Network: mainnet
+  
+  ValidatorOptions:
+    # Whether to enable MEV block production. Requires the connected Beacon node to be MEV-enabled.
+    BuilderProposals: false
 
 eth2:
   # HTTP URL of the Beacon node to connect to.
@@ -180,7 +184,7 @@ p2p:
 # Note: Operator private key can be generated with the `generate-operator-keys` command.
 OperatorPrivateKey: <operator-private-key>
 
-# Enable monitoring - https://github.com/bloxapp/ssv/tree/main/monitoring
+# This enables monitoring at the specified port, see https://github.com/bloxapp/ssv/tree/main/monitoring
 MetricsAPIPort: 15000
 ```
 
