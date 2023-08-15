@@ -21,7 +21,7 @@ For your reference, the [ETHStaker](https://github.com/eth-educators/ethstaker-g
 
 ## How to enable MEV in SSV node
 
-Once the Beacon client has been configured to enable MEV and connect to the Builders API, You must update the `config.yaml` file in the SSV node to enable MEV for your operator:
+Update the `config.yaml` file in the SSV node to enable MEV for your operator:
 
 ```
 ssv:
