@@ -4,7 +4,7 @@ This guide outlines the necessary steps required to configure MEV within your SS
 
 ## Prerequisite: Enable MEV in Beacon Client
 
-Enable MEV by connecting to the Builders API from your Beacon client.
+Enable MEV by connecting to the [Builders API](https://github.com/ethereum/builder-specs) from your Beacon client.
 
 This integration will grant you access to a network of block builders, who collaborate with MEV searchers to produce the most valuable blocks that validators can propose.
 
