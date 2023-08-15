@@ -52,7 +52,7 @@ Therefore, it is recommended to support as many relays as possible in your opera
 
 It's crucial for the network to display the relays supported by operators. The availability of this information aids the network's stability by enabling stakers to use it when considering how to form their clusters, thereby preventing the problems highlighted earlier. Additionally, this practice enhances the operator's likelihood of being selected by stakers.
 
-To showcase the relays your operator supports to the network, it's essential to include them in your **operator metadata**.
+To showcase the relays your operator supports to the network, it's essential to include them in your operator metadata.
 
 ### How to show supported relays in operator metadata
 
