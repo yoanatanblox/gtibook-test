@@ -16,7 +16,7 @@ Follow the setup guidelines for configuring MEV on your preferred client:
 * [Nimbus](https://nimbus.guide/external-block-builder.html)
 
 {% hint style="info" %}
-For your reference, the [ETHStaker](https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md) community provides a list of MEV relays and their corresponding endpoints.
+For reference, the [ETHStaker](https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md) community provides a list of MEV relays and their corresponding endpoints.
 {% endhint %}
 
 ## How to enable MEV in SSV node
